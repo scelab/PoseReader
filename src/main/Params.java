@@ -9,18 +9,12 @@ import java.util.Properties;
 public class Params {
 
 	public static final String robotType;
-	public static final int readPort;
 
 	static {
 		Properties properties = loadProperties("System.properties");
 		// Robot type
 		robotType = properties.getProperty("ROBOT_TYPE");
 		checkNullProperties(robotType);
-		// Server port
-		final String strReadPort = properties.getProperty("READ_PORT");
-		checkNullProperties(strReadPort);
-		checkIntProperties(strReadPort);
-		readPort = Integer.valueOf(strReadPort);
 	}
 
 	private static Properties loadProperties(String path) {
@@ -42,13 +36,13 @@ public class Params {
 		}
 	}
 
-	private static void checkIntProperties(String s) {
-		try {
-			Integer.parseInt(s);
-		} catch (NumberFormatException e) {
-			e.printStackTrace();
-			System.exit(0);
+	/*	private static void checkIntProperties(String s) {
+			try {
+				Integer.parseInt(s);
+			} catch (NumberFormatException e) {
+				e.printStackTrace();
+				System.exit(0);
+			}
 		}
-	}
-
+	*/
 }
